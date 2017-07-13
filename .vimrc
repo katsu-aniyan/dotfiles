@@ -19,6 +19,9 @@ call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neoyank.vim')
+
+" github
+call dein#add('thinca/vim-quickrun')
   :
 
 call dein#end()
@@ -28,6 +31,15 @@ if dein#check_install()
 endif
 filetype plugin indent on
 """""" dein end
+
+""文字コード関連 参考
+"http://qiita.com/take4s5i/items/a347be456b2f1312150c
+"
+set encoding=utf-8
+""ファイル書き込み時の文字コード(バッファ→ファイル時に必要あらば変換される)
+set fileencoding=utf-8
+"読み込み時の文字コード
+set fileencodings=utf-8,cp932
 
 set number
 set incsearch
@@ -138,3 +150,9 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:quickrun_config = {
+\  'python': {
+\    'command': 'python3'
+\  },
+\}
