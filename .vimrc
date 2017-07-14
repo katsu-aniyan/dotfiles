@@ -152,7 +152,9 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:quickrun_config = {
+\  '*' : {'split' : 'vsplit'},
 \  'python': {
 \    'command': 'python3'
 \  },
 \}
+set splitright
