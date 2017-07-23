@@ -19,6 +19,7 @@ call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neoyank.vim')
+call dein#add('Shougo/neomru.vim')
 
 " github
 call dein#add('thinca/vim-quickrun')
