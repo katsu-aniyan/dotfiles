@@ -23,6 +23,7 @@ call dein#add('Shougo/neomru.vim')
 
 " github
 call dein#add('thinca/vim-quickrun')
+call dein#add('scrooloose/nerdtree')
   :
 
 call dein#end()
