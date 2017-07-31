@@ -124,3 +124,8 @@ fi
 lll(){
   ll --color=always | less -R
 }
+
+# bash_local is env local settings
+if [ -f ~/.bash_local ]; then
+	. ~/.bash_local
+fi
