@@ -24,6 +24,8 @@ call dein#add('Shougo/neomru.vim')
 " github
 call dein#add('thinca/vim-quickrun')
 call dein#add('scrooloose/nerdtree')
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+call dein#add('lambdalisue/unite-grep-vcs')
   :
 
 call dein#end()
@@ -82,6 +84,8 @@ nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+nnoremap <silent> ,gp :<C-u>Unite grep<CR>
+nnoremap <silent> ,gt :<C-u>Unite grep/git<CR>
 
 " NERDTree
 nnoremap <silent> ,nt :<C-u>NERDTreeToggle<CR>
