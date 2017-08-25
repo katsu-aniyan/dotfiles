@@ -132,3 +132,6 @@ llt(){
 if [ -f ~/.bash_local ]; then
 	. ~/.bash_local
 fi
+
+# terminal quit output option disable
+stty stop undef
