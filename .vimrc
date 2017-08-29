@@ -158,6 +158,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+" python のdocstringの表示をOFFにする
+autocmd FileType python setlocal completeopt-=preview
+
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
@@ -178,3 +181,4 @@ let g:quickrun_config = {
 \  },
 \}
 set splitright
+
