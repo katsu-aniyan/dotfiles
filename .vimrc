@@ -84,8 +84,21 @@ nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
-nnoremap <silent> ,gp :<C-u>Unite grep<CR>
-nnoremap <silent> ,gt :<C-u>Unite grep/git<CR>
+nnoremap <silent> ,gp :<C-u>Unite grep -buffer-name=search-buffer<CR>
+nnoremap <silent> ,gt :<C-u>Unite grep/git -buffer-name=search-buffer<CR>
+
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+
+" " grep検索
+"nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+
+" " カーソル位置の単語をgrep検索
+nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+
+" grep検索結果の再呼出
+nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
 
 " NERDTree
 nnoremap <silent> ,nt :<C-u>NERDTreeToggle<CR>
