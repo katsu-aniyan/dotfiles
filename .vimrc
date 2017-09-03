@@ -109,8 +109,12 @@ call submode#map('changetab', 'n', '', 't', 'gt')
 call submode#map('changetab', 'n', '', 'T', 'gT')
 
 " 大文字小文字を区別しない
+let g:unite_enable_start_insert=1
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
+
+" default action 
+call unite#custom#default_action('file,buffer' , 'tabopen')
 
 " " grep検索
 "nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
