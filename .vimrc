@@ -26,6 +26,7 @@ call dein#add('thinca/vim-quickrun')
 call dein#add('scrooloose/nerdtree')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('lambdalisue/unite-grep-vcs')
+call dein#add('kana/vim-submode')
   :
 
 call dein#end()
@@ -79,6 +80,7 @@ nnoremap ; :
 nnoremap <silent> ,fa ggVG=
 
 " for unite keymap
+nnoremap <silent> ,ut :<C-u>Unite tab<CR>
 nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
@@ -86,6 +88,25 @@ nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
 nnoremap <silent> ,gp :<C-u>Unite grep -buffer-name=search-buffer<CR>
 nnoremap <silent> ,gt :<C-u>Unite grep/git -buffer-name=search-buffer<CR>
+
+" key mapping memo
+" gt : show next tab
+" gT ; show prev tab
+"
+
+" key mpapping for vim-submode
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '+', '<C-w>+')
+call submode#map('winsize', 'n', '', '-', '<C-w>-')
+call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
+call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
+call submode#map('changetab', 'n', '', 't', 'gt')
+call submode#map('changetab', 'n', '', 'T', 'gT')
 
 " 大文字小文字を区別しない
 let g:unite_enable_ignore_case = 1
