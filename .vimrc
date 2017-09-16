@@ -27,6 +27,7 @@ call dein#add('scrooloose/nerdtree')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('lambdalisue/unite-grep-vcs')
 call dein#add('kana/vim-submode')
+call dein#add('Shougo/unite-outline')
   :
 
 call dein#end()
@@ -86,6 +87,7 @@ nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+nnoremap <silent> ,uo :<C-u>Unite outline<CR>
 nnoremap <silent> ,gp :<C-u>Unite grep -buffer-name=search-buffer<CR>
 nnoremap <silent> ,gt :<C-u>Unite grep/git -buffer-name=search-buffer<CR>
 
@@ -220,3 +222,8 @@ let g:quickrun_config = {
 \}
 set splitright
 
+" ヤンクでクリップボードにコピーする
+" http://nanasi.jp/articles/howto/editing/clipboard.html
+" chromebook のcroutonではうまく動いてないけどいったんセットしておく
+set clipboard+=unnamed
+set clipboard+=autoselect
