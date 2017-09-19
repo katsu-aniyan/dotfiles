@@ -5,12 +5,12 @@ let s:dein_dir = expand('~/.vim/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if &compatible
-  set nocompatible
+    set nocompatible
 endif
 
 if !isdirectory(s:dein_repo_dir)
-"  execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
-   execute '!git clone https://github.com/Shougo/dein.vim.git' s:dein_repo_dir
+    "  execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
+    execute '!git clone https://github.com/Shougo/dein.vim.git' s:dein_repo_dir
 endif
 
 execute 'set runtimepath^=' . s:dein_repo_dir
@@ -28,12 +28,12 @@ call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('lambdalisue/unite-grep-vcs')
 call dein#add('kana/vim-submode')
 call dein#add('Shougo/unite-outline')
-  :
+:
 
 call dein#end()
 
 if dein#check_install()
-  call dein#install()
+    call dein#install()
 endif
 filetype plugin indent on
 """""" dein end
@@ -116,7 +116,7 @@ let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 
 " default action 
-call unite#custom#default_action('file,buffer' , 'tabopen')
+call unite#custom#default_action('file,buffer,file_mru,grep,grep/git' , 'tabopen')
 
 " " grep検索
 "nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
@@ -151,10 +151,10 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+            \ 'default' : '',
+            \ 'vimshell' : $HOME.'/.vimshell_hist',
+            \ 'scheme' : $HOME.'/.gosh_completions'
+            \ }
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
@@ -170,9 +170,9 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
+    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+    " For no inserting <CR> key.
+    "return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -201,9 +201,12 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " python のdocstringの表示をOFFにする
 autocmd FileType python setlocal completeopt-=preview
 
+"autocmdについて
+"http://qiita.com/s_of_p/items/b61e4c3a0c7ee279848a
+
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
+    let g:neocomplete#sources#omni#input_patterns = {}
 endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
@@ -215,11 +218,11 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:quickrun_config = {
-\  '*' : {'split' : 'vsplit'},
-\  'python': {
-\    'command': 'python3'
-\  },
-\}
+            \  '*' : {'split' : 'vsplit'},
+            \  'python': {
+            \    'command': 'python3'
+            \  },
+            \}
 set splitright
 
 " ヤンクでクリップボードにコピーする
@@ -227,3 +230,13 @@ set splitright
 " chromebook のcroutonではうまく動いてないけどいったんセットしておく
 set clipboard+=unnamed
 set clipboard+=autoselect
+
+" unit grep にagを使う
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
+endif
