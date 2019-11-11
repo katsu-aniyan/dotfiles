@@ -66,6 +66,12 @@ set clipboard+=unnamed
 set formatoptions=q
 au BufEnter * execute ":lcd " . expand("%:p:h")
 set cursorline
+"hi clear cursorline
+" 行の文字色 & 背景色
+highlight CursorLine cterm=NONE ctermbg=black
+"
+" " 行番号
+highlight CursorLineNr term=bold cterm=NONE ctermfg=yellow ctermbg=NONE
 set virtualedit=block
 set smartindent
 
@@ -219,12 +225,13 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:quickrun_config = {
-            \  '*' : {'split' : 'vsplit'},
+            \  '*' : {'split' : ''},
             \  'python': {
             \    'command': 'python3'
             \  },
             \}
-set splitright
+" set splitright
+set splitbelow
 
 " ヤンクでクリップボードにコピーする
 " http://nanasi.jp/articles/howto/editing/clipboard.html
