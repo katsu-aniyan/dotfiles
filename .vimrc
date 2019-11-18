@@ -1,4 +1,4 @@
-"autocmd!
+"self.autocmd!
 
 """""" dein 
 let s:dein_dir = expand('~/.vim/dein')
@@ -29,6 +29,7 @@ call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('lambdalisue/unite-grep-vcs')
 call dein#add('kana/vim-submode')
 call dein#add('Shougo/unite-outline')
+call dein#add('davidhalter/jedi-vim')
 :
 
 call dein#end()
@@ -202,8 +203,19 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType python setlocal omnifunc=jedi#completions
+
+" setup python completion for jedi
+let g:jedi#auto_vim_configuration = 0
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.python = '\h\w*\|[^. \t]\.\w*'
+
+" Changed keymap because it conflicts with quickrun.
+let g:jedi#rename_command = "<leader>R"
 
 " python のdocstringの表示をOFFにする
 autocmd FileType python setlocal completeopt-=preview
