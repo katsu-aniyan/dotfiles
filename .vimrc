@@ -4,6 +4,7 @@
 call plug#begin()
 Plug 'vim-jp/vimdoc-ja'
 Plug 'thinca/vim-quickrun'
+Plug 'kien/ctrlp.vim'
 call plug#end()
 
 """""""""""""""""""""""
@@ -17,7 +18,9 @@ filetype plugin indent on
 set number
 set helplang=ja,en
 
+set hlsearch
 
+colorscheme elflord
 
 
 """""""""""""""""""""""
@@ -38,6 +41,13 @@ nnoremap <C-n> :cn<CR>
 nnoremap <silent> <C-j> :bp<CR>
 nnoremap <silent> <C-k> :bn<CR>
 
+" benri
+nnoremap H ^
+nnoremap L $
+
+" delete highright
+nnoremap <ESC><ESC> :nohlsearch<CR>
+
 " I want to each file type
 inoremap <Tab> <C-x><C-o>
 
@@ -51,6 +61,12 @@ nnoremap <silent> [vim-go]b :GoBuild<CR>
 nnoremap <silent> [vim-go]d :GoDef<CR>
 nnoremap <silent> [vim-go]dc :GoDoc<CR>
 
+nnoremap [ctrl-p] <Nop>
+nmap <Leader>c [ctrl-p]
+nnoremap <silent>  [ctrl-p]p :CtrlP<CR>
+
+nnoremap <Leader>sv :source $MYVIMRC<CR>
+nnoremap <Leader>ev :e $MYVIMRC<CR>
 
 """""""""""""""""""""""
 
