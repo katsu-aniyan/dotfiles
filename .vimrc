@@ -5,6 +5,7 @@ call plug#begin()
 Plug 'vim-jp/vimdoc-ja'
 Plug 'thinca/vim-quickrun'
 Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
 """""""""""""""""""""""
@@ -19,6 +20,7 @@ set number
 set helplang=ja,en
 
 set hlsearch
+nohlsearch
 
 colorscheme elflord
 
@@ -61,9 +63,14 @@ nnoremap <silent> [vim-go]b :GoBuild<CR>
 nnoremap <silent> [vim-go]d :GoDef<CR>
 nnoremap <silent> [vim-go]dc :GoDoc<CR>
 
+let g:ctrlp_map = '<Nop>'
 nnoremap [ctrl-p] <Nop>
 nmap <Leader>c [ctrl-p]
 nnoremap <silent>  [ctrl-p]p :CtrlP<CR>
+
+nnoremap [nerdtree] <Nop>
+nmap <Leader>n [nerdtree]
+nnoremap <silent> [nerdtree]t :NERDTreeToggle<CR>
 
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>ev :e $MYVIMRC<CR>
