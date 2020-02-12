@@ -1,12 +1,24 @@
 " set runtimepath+=~/vimsrc/vim-polyglot
 " set runtimepath+=~/vimsrc/vimdoc-ja
+"
+" reference for vim script
+" https://knowledge.sakura.ad.jp/23436/
 
 call plug#begin()
 Plug 'vim-jp/vimdoc-ja'
 Plug 'thinca/vim-quickrun'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 call plug#end()
+
+" add completion plugin deoplate
+let g:deoplete#enable_at_startup = 1
+" add go-completion plugin for deoplete
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
 """""""""""""""""""""""
 " basic settings
@@ -29,6 +41,7 @@ colorscheme elflord
 " quickfix
 """""""""""""""""""""""
 autocmd QuickFixCmdPost *grep* cwindow
+set modifiable
 
 """""""""""""""""""""""
 " keymapping
@@ -51,7 +64,7 @@ nnoremap L $
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
 " I want to each file type
-inoremap <Tab> <C-x><C-o>
+" inoremap <Tab> <C-x><C-o>
 
 " quickrun
 nnoremap <Leader>r :<C-U>QuickRun<CR>
@@ -82,3 +95,9 @@ set hidden
 
 set tabstop=4
 set shiftwidth=4
+
+
+"""""""""""""""""""""""
+" plugin setting for my session.vim
+let g:session_path='/data/data/com.termux/files/home/vim_session'
+
