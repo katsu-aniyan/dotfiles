@@ -75,6 +75,7 @@ nnoremap [vim-go] <Nop>
 nmap <Leader>g [vim-go]
 nnoremap <silent> [vim-go]b :GoBuild<CR>
 nnoremap <silent> [vim-go]d :GoDef<CR>
+nnoremap <silent> [vim-go]r :GoRun<CR>
 nnoremap <silent> [vim-go]dc :GoDoc<CR>
 
 let g:ctrlp_map = '<Nop>'
